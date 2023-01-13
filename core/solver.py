@@ -23,7 +23,7 @@ from core.checkpoint import CheckpointIO
 from core.data_loader import InputFetcher
 import core.utils as utils
 from metrics.eval import calculate_metrics
-
+from tqdm import trange
 
 class Solver(nn.Module):
     def __init__(self, args):
@@ -96,7 +96,7 @@ class Solver(nn.Module):
 
         print('Start training...')
         start_time = time.time()
-        for i in range(args.resume_iter, args.total_iters):
+        for i in trange(args.resume_iter, args.total_iters):
             # fetch images and labels
             inputs = next(fetcher)
             x_real, y_org = inputs.x_src, inputs.y_src

@@ -1,0 +1,8 @@
+*.style*
+*.zip
+*.dcm
+*.nii*
+*.png*
+*.jpg*
+*.pyc
+*.ckpt
