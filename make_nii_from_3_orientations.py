@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import cv2
 import argparse
+import scipy.ndimage
 
 
 
@@ -79,10 +80,13 @@ for ori in orient:
     
     if ori == 'axial':
         oneimg = nimg_rs#np.moveaxis(nimg_rs, 0, -1)
+        oneimg = scipy.ndimage.zoom(oneimg, np.array([256]*3)/np.array(oneimg.shape))
     elif ori == 'coronal':
         twoimg = np.moveaxis(nimg_rs, 0, 1)
+        twoimg = scipy.ndimage.zoom(twoimg, np.array([256]*3)/np.array(twoimg.shape))
     else:
         threeimg = np.moveaxis(nimg_rs,0,-1)
+        threeimg = scipy.ndimage.zoom(twoimg, np.array([256]*3)/np.array(twoimg.shape))
  
 nimg = (oneimg + twoimg + threeimg)/3
 nimg[nimg < -1] = -1

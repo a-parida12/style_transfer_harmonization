@@ -129,7 +129,7 @@ def translate_using_reference_2(nets, args, x_src, x_ref, y_ref, filename):
     view = p2[1]
     p3 = os.path.split(p2[0])
     ID = p3[1]
-    #msrc = {"x_src": x_src.cpu().numpy()}
+    msrc = {"x_src": x_src.cpu().numpy()}
     #srcname = args.result_dir + '/' + ID + '_' + view + '_src.mat'
     srcname = args.result_dir + '/' + ID + '_' + view + '_src.npy'
     print(srcname)

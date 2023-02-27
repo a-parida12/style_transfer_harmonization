@@ -60,13 +60,17 @@ for INP_IMG in ${INP_PATH}/*.nii.gz;do
                --result_dir ${TMPPATH} \
                --src_dir ${subf} \
                --ref_dir ${REFPATH}/$orient \
-               --val_batch_size 254
+               --val_batch_size 400
 
     done
 
     python make_nii_from_3_orientations.py --input_img ${INP_IMG} --load_path ${TMPPATH} --save_path ${SRCPATH}
     python make_nii_from_3_orientations.py --input_img ${INP_IMG} --load_path ${TMPPATH} --save_path ${SRCPATH} --is_src True
-
+    
+    rm -r ${TMPPATH}
+    rm -r ${SRCPATH}/axial
+    rm -r ${SRCPATH}/coronal
+    rm -r ${SRCPATH}/sagittal
 done
 
 
